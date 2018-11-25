@@ -26,6 +26,29 @@ class Airport(Base):
     airportCity = Column(String(60))
     airportState = Column(String(30))
 
+class User(Base):
+    __tablename__ = 'user'
+    username = Column(String(20), primary_key = True)
+    password = Column(String(20))
+
+class Airline(Base):
+    __tablename__ = 'airline'
+    airline = Column(String(60), primary_key = True)
+    airlineLogoUrl = Column(String(200))
+
+class UserWish(Base):
+    __tablename__ = 'userwish'
+    wishId =  Column(Integer, primary_key = True)
+    username = Column(String(20))
+
+class Wish(Base):
+    __tablename__ = 'wish'
+    wishId = Column(Integer, primary_key=True)
+    airline = Column(String(60), primary_key=True)
+    flightCode = Column(Integer, primary_key=True)
+    departureDate = Column(Date, primary_key=True)
+    departureTime = Column(Time, primary_key=True)
+
 engine = sqlalchemy.create_engine("mysql+pymysql://root:password@localhost:3306/databasePJ?charset=utf8")
 Base.metadata.create_all(engine)
 
@@ -194,7 +217,27 @@ def insert_airport_data():
         session.commit()
     session.close()
 
+def insert_airline_data():
+    DBSession = sessionmaker(bind=engine)
+    session = DBSession()
+    airlines = ['Alaska Airlines', 'American Airlines','Delta','Frontier Airlines','JetBlue Airways','Spirit Airlines','United']
+    logos = ['https://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/vector/s/AS_sq.svg',
+             'https://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/vector/s/AA_sq.svg',
+             'https://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/vector/s/DL_sq.svg',
+             'https://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/vector/s/F9_sq.svg',
+             'https://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/vector/s/b6_sq.svg',
+             'https://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/vector/s/NK_sq.svg',
+             'https://images.trvl-media.com/media/content/expus/graphics/static_content/fusion/v0.1b/images/airlines/vector/s/UA_sq.svg']
+    for i in range(len(airlines)):
+        airline = airlines[i]
+        logo  = logos[i]
+        newAirline = Airline(airline = airline, airlineLogoUrl = logo)
+        session.add(newAirline)
+        session.commit()
+    session.close()
+
 #scrape_flight_data()
 #generate_airport_data()
-insert_airport_data()
-insert_flight_data()
+#insert_airport_data()
+#insert_flight_data()
+insert_airline_data()
