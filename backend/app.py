@@ -2,10 +2,12 @@ from collections import deque
 from flask import Flask, request, jsonify
 from flaskext.mysql import MySQL
 
+
+
 app = Flask(__name__)
 mysql = MySQL()
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '123456'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'password'
 app.config['MYSQL_DATABASE_DB'] = 'databasePJ'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_PORT'] = 3306
@@ -40,7 +42,7 @@ mysql.init_app(app)
 #     return jsonify(data)
 
 
-@app.route('/api/flights')
+'''@app.route('/api/flights')
 def api_flights():
     cursor = mysql.connect().cursor()
     departure_airport_city = request.args.get('origin')
@@ -83,8 +85,33 @@ def api_flights():
         for _ in range(size):
             cur = flight_queue.popleft()
             if cur[1][7] in arrival_airport_codes:
+'''
 
+@app.route('/api/register')
+def register():
+    connection = mysql.connect()
+    cursor = connection.cursor()
+    #print (request.args.get('username'))
+    #print (request.args.get('password'))
+    cursor.execute("select * from user where username = %(username)s", {'username':request.args.get('username')})
+    row = cursor.fetchone()
+    if (row != None):
+        return jsonify({'type': 'repeat username'})
+    cursor.execute("insert into user values (%(username)s, %(password)s)", {'username': request.args.get('username'), 'password': request.args.get('password')})
+    connection.commit()
+    return jsonify({'type': 'register success'})
 
+@app.route('/api/login')
+def login():
+    connection = mysql.connect()
+    cursor = connection.cursor()
+    cursor.execute("select * from user where username = %(username)s", {'username':request.args.get('username')})
+    row = cursor.fetchone()
+    if (row == None):
+        return jsonify({'type': 'no such username'})
+    if (row[1] != request.args.get('password')):
+        return jsonify({'type': 'wrong password'})
+    return jsonify({'type': 'login success'})
 
 
 if __name__ == '__main__':
