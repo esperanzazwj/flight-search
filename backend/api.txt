@@ -1,0 +1,5 @@
+/api/flights
+    roundtrip
+    origin
+    destination
+    depart

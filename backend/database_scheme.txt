@@ -1,0 +1,17 @@
+flight
+    airline
+    flight_code
+    departure_date
+    departure_time
+    arrival_date
+    arrival_time
+    departure_airport_code
+    arrival_airport_code
+    price
+
+airport
+    airport_code
+    airport_name
+    airport_city
+    airport_state
+
