@@ -96,10 +96,14 @@ def register():
     cursor.execute("select * from user where username = %(username)s", {'username':request.args.get('username')})
     row = cursor.fetchone()
     if (row != None):
-        return jsonify({'type': 'repeat username'})
+        resp = make_response(jsonify({'status': 'error'}), 200)
+        resp.headers['Access-Control-Allow-Credentials'] = 'true'
+        return resp
     cursor.execute("insert into user values (%(username)s, %(password)s)", {'username': request.args.get('username'), 'password': request.args.get('password')})
     connection.commit()
-    return jsonify({'type': 'register success'})
+    resp = make_response(jsonify({'status': 'ok'}), 200)
+    resp.headers['Access-Control-Allow-Credentials'] = 'true'
+    return resp
 
 @app.route('/api/login')
 def login():
@@ -108,10 +112,16 @@ def login():
     cursor.execute("select * from user where username = %(username)s", {'username':request.args.get('username')})
     row = cursor.fetchone()
     if (row == None):
-        return jsonify({'type': 'no such username'})
+        resp = make_response(jsonify({'status': 'error'}), 200)
+        resp.headers['Access-Control-Allow-Credentials'] = 'true'
+        return resp
     if (row[1] != request.args.get('password')):
-        return jsonify({'type': 'wrong password'})
-    return jsonify({'type': 'login success'})
+        resp = make_response(jsonify({'status': 'error'}), 200)
+        resp.headers['Access-Control-Allow-Credentials'] = 'true'
+        return resp
+    resp = make_response(jsonify({'status': 'ok'}), 200)
+    resp.headers['Access-Control-Allow-Credentials'] = 'true'
+    return resp
 
 
 if __name__ == '__main__':
