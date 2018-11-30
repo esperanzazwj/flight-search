@@ -1,6 +1,8 @@
 import json
 from requests_html import HTMLSession
 
+airportCity = {}
+
 def scrape_flight_data():
     """file = open('stateAirport.txt', 'r')
     airportCode = []
@@ -8,14 +10,17 @@ def scrape_flight_data():
         airportCode.append(line.split(',')[1][:-1])
     print (airportCode)"""
     airportCode = ['nyc','qla','chi','phl','hou','phx','san','sea','dal','was']
+    City = ['New York', 'Los Angeles', 'Chicago','Philadelphia','Houston','Phoenix','San Diego','Seattle','Dallas','Washington, DC' ]
     nAirport = len(airportCode)
     resultFile = open('flightTable.out', 'w')
-    for date in range(30):
+    for date in range(3):
         for indexi in range(nAirport):
             for indexj in range(nAirport):
                 if indexi!=indexj:
                     sourceCity = airportCode[indexi]
+                    departureCityFullName  = City[indexi]
                     destinationCity = airportCode[indexj]
+                    arrivalCityFullName = City[indexj]
                     departureDate = '12/' + str(date + 1)+'/2018'
                     url = "https://www.expedia.com/Flights-Search?flight-type=on&starDate=" + departureDate +"&mode=search&trip=oneway&leg1=from:"+ sourceCity+",to:"+ destinationCity+ ",departure:"+ departureDate+"TANYT&passengers=adults:1"
                     print(url)
@@ -38,6 +43,8 @@ def scrape_flight_data():
                         departureAirportCode = thisFlight['departureLocation']['airportCode']
                         arrivingCity = thisFlight['arrivalLocation']['airportCity']
                         arrivingAirportCode = thisFlight['arrivalLocation']['airportCode']
+                        airportCity[departureAirportCode] = departureCityFullName
+                        airportCity[arrivingAirportCode] = arrivalCityFullName
                         if len(thisFlight['timeline'])!=1:
                             continue
                         flightNumber = thisFlight['timeline'][0]['carrier']['flightNumber']
@@ -135,5 +142,14 @@ def generate_airport_data():
         airportTableFile.write(airportCode + ',' + airportName + ',' + airportCity + ',' + stateName + '\n')
     return
 
+def generate_consistent_airport_data():
+    airportTableFile = open('airportTable.out', 'w')
+    for code in airportCity:
+        city = airportCity[code]
+        print (code + "," + city)
+        airportTableFile.write(code + ":" + city + '\n')
+    #print (airportCity)
+
 scrape_flight_data()
-generate_airport_data()
+#generate_airport_data()
+generate_consistent_airport_data()

@@ -21,9 +21,7 @@ class Flight(Base):
 class Airport(Base):
     __tablename__ = 'airport'
     airportCode = Column(String(3), primary_key=True)
-    airportName = Column(String(60))
     airportCity = Column(String(60))
-    airportState = Column(String(30))
 
 class User(Base):
     __tablename__ = 'user'
@@ -76,7 +74,7 @@ def insert_airport_data():
     session = DBSession()
     airportTableFile = open('airportTable.out', 'r')
     for line in airportTableFile.readlines():
-        newAirport = Airport(airportCode = line.split(',')[0], airportName = line.split(',')[1], airportCity = line.split(',')[2], airportState = line.split(',')[3][:-1])
+        newAirport = Airport(airportCode = line.split(':')[0],  airportCity = line.split(':')[1][:-1])
         session.add(newAirport)
         session.commit()
     session.close()
@@ -101,5 +99,5 @@ def insert_airline_data():
     session.close()
 
 insert_airport_data()
-insert_flight_data()
-insert_airline_data()
+#insert_flight_data()
+#insert_airline_data()
