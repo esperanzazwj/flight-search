@@ -87,12 +87,9 @@ class TableList extends PureComponent {
       window.alert("Add to wish list");
       console.log('id: ', item[0].id);
       const wid = item[0].id;
-      const wairlines = item[0].airlines;
-      const wnumber = item[0].number;
-      const wdtime = item[0].depart_time;
       dispatch({
         type: 'flights/add',
-        payload: { wid, wairlines, wnumber, wdtime },
+        payload: { wid },
       });
     }
   };
@@ -735,7 +732,7 @@ class TableList extends PureComponent {
               {item.map(item => this.renderOneFlight(item, styles))}
               <div style={{ overflow: 'hidden' }}>
                 <div style={{ float: 'right', marginBottom: 24 }}>
-                  <Button style={{ marginLeft: 48 } } type="primary" htmlType="submit" onClick={() => this.addWish(item.id)}>
+                  <Button style={{ marginLeft: 48 } } type="primary" htmlType="submit" onClick={() => this.addWish(item)}>
                     Add to wish list
                   </Button>
                 </div>

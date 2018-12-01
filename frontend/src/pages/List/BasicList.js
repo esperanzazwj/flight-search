@@ -60,12 +60,9 @@ class BasicList extends PureComponent {
   deleteItem = item => {
     const { dispatch } = this.props;
     const wid = item[0].id;
-    const wairlines = item[0].airlines;
-    const wnumber = item[0].number;
-    const wdtime = item[0].depart_time;
     dispatch({
       type: 'list/remove',
-      payload: { wid, wairlines, wnumber, wdtime },
+      payload: { wid },
     });
   };
 
