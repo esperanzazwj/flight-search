@@ -46,7 +46,7 @@ class Wish(Base):
     departureDate = Column(Date, primary_key=True)
     departureTime = Column(Time, primary_key=True)
 
-engine = sqlalchemy.create_engine("mysql+pymysql://root:password@localhost:3306/databasePJ?charset=utf8")
+engine = sqlalchemy.create_engine("mysql+pymysql://root:123456@localhost:3306/databasePJ?charset=utf8")
 Base.metadata.create_all(engine)
 
 

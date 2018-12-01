@@ -208,12 +208,38 @@ class TableList extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={12} sm={24}>
             <FormItem label="Origin">
-              {getFieldDecorator('origin', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('origin', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
           <Col md={12} sm={24}>
             <FormItem label="Destination">
-              {getFieldDecorator('destination', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('destination', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
@@ -230,20 +256,6 @@ class TableList extends PureComponent {
               )}
             </FormItem>
           </Col>
-          {/* <Col md={8} sm={24}>
-            <FormItem label="Travelers">
-              {getFieldDecorator('travelers')(
-                <Select placeholder="1" style={{ width: '100%' }}>
-                  <Option value="0">0</Option>
-                  <Option value="1">1</Option>
-                  <Option value="2">2</Option>
-                  <Option value="3">3</Option>
-                  <Option value="4">4</Option>
-                  <Option value="5">5</Option>
-                </Select>
-              )}
-            </FormItem>
-          </Col> */}
         </Row>
         <Row>
           <Col md={8} sm={24}>
@@ -259,7 +271,7 @@ class TableList extends PureComponent {
               </a>
             </span>
           </Col>
-          <Col md={6} sm={24}>
+          <Col md={8} sm={24}>
             <FormItem label="Sort">
               {getFieldDecorator('sort')(
                 <Select placeholder="Price(Low-High)" style={{ width: '100%' }} >
@@ -289,15 +301,38 @@ class TableList extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={12} sm={24}>
             <FormItem label="Origin">
-              {getFieldDecorator('origin', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('origin', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
-          <div>
-             {/* {flights && JSON.stringify(flights) || 'no data'}  */}
-          </div>
           <Col md={12} sm={24}>
             <FormItem label="Destination">
-              {getFieldDecorator('destination', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('destination', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
           <Col md={12} sm={24}>
@@ -307,20 +342,6 @@ class TableList extends PureComponent {
               )}
             </FormItem>
           </Col>
-          {/* <Col md={12} sm={24}>
-            <FormItem label="Travelers">
-              {getFieldDecorator('travelers')(
-                <Select placeholder="1" style={{ width: '100%' }}>
-                  <Option value="0">0</Option>
-                  <Option value="1">1</Option>
-                  <Option value="2">2</Option>
-                  <Option value="3">3</Option>
-                  <Option value="4">4</Option>
-                  <Option value="5">5</Option>
-                </Select>
-              )}
-            </FormItem>
-          </Col> */}
         </Row>
         <Row>
           <Col md={8} sm={24}>
@@ -336,7 +357,7 @@ class TableList extends PureComponent {
               </a>
             </span>
           </Col>
-          <Col md={6} sm={24}>
+          <Col md={8} sm={24}>
             <FormItem label="Sort">
               {getFieldDecorator('sort')(
                 <Select placeholder="Price(Low-High)" style={{ width: '100%' }} >
@@ -365,12 +386,38 @@ class TableList extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={12} sm={24}>
             <FormItem label="Origin">
-              {getFieldDecorator('origin', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('origin', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
           <Col md={12} sm={24}>
             <FormItem label="Destination">
-              {getFieldDecorator('destination', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('destination', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
@@ -387,20 +434,6 @@ class TableList extends PureComponent {
               )}
             </FormItem>
           </Col>
-          {/* <Col md={8} sm={24}>
-            <FormItem label="Travelers">
-              {getFieldDecorator('travelers')(
-                <Select placeholder="1" style={{ width: '100%' }}>
-                  <Option value="0">0</Option>
-                  <Option value="1">1</Option>
-                  <Option value="2">2</Option>
-                  <Option value="3">3</Option>
-                  <Option value="4">4</Option>
-                  <Option value="5">5</Option>
-                </Select>
-              )}
-            </FormItem>
-          </Col> */}
         </Row>
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={6} sm={24}>
@@ -436,9 +469,9 @@ class TableList extends PureComponent {
               <FormItem label="Stops">
                 {getFieldDecorator('stops')(
                   <TagSelect>
-                    <TagSelect.Option value="stop0">Nonstop</TagSelect.Option>
-                    <TagSelect.Option value="stop1">1 Stop</TagSelect.Option>
-                    <TagSelect.Option value="stop2">2+ Stops</TagSelect.Option>
+                    <TagSelect.Option value="0">Nonstop</TagSelect.Option>
+                    <TagSelect.Option value="1">1 Stop</TagSelect.Option>
+                    <TagSelect.Option value="3">2+ Stops</TagSelect.Option>
                   </TagSelect>
                 )}
               </FormItem>
@@ -478,7 +511,7 @@ class TableList extends PureComponent {
               </a>
             </span>
           </Col>
-          <Col md={6} sm={24}>
+          <Col md={8} sm={24}>
             <FormItem label="Sort">
               {getFieldDecorator('sort')(
                 <Select placeholder="Price(Low-High)" style={{ width: '100%' }}>
@@ -507,12 +540,38 @@ class TableList extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={12} sm={24}>
             <FormItem label="Origin">
-              {getFieldDecorator('origin', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('origin', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
           <Col md={12} sm={24}>
             <FormItem label="Destination">
-              {getFieldDecorator('destination', {rules: [{ required: true }]})(<Input placeholder="City or airport" />)}
+              {getFieldDecorator('destination', {rules: [{ required: true }]})(
+                <Select placeholder="City" style={{ width: '100%' }}>
+                  <Option value="New York">New York</Option>
+                  <Option value="Los Angeles">Los Angeles</Option>
+                  <Option value="San Francisco">San Francisco</Option>
+                  <Option value="Chicago">Chicago</Option>
+                  <Option value="Seattle">Seattle</Option>
+                  <Option value="Washington DC">Washington DC</Option>
+                  <Option value="Dallas">Dallas</Option>
+                  <Option value="Philadelphia">Philadelphia</Option>
+                  <Option value="Houston">Houston</Option>
+                  <Option value="Phoenix">Phoenix</Option>
+                </Select>
+              )}
             </FormItem>
           </Col>
           <Col md={8} sm={24}>
@@ -522,20 +581,6 @@ class TableList extends PureComponent {
               )}
             </FormItem>
           </Col>
-          {/* <Col md={8} sm={24}>
-            <FormItem label="Travelers">
-              {getFieldDecorator('travelers')(
-                <Select placeholder="1" style={{ width: '100%' }}>
-                  <Option value="travel0">0</Option>
-                  <Option value="travel1">1</Option>
-                  <Option value="travel2">2</Option>
-                  <Option value="travel3">3</Option>
-                  <Option value="travel4">4</Option>
-                  <Option value="travel5">5</Option>
-                </Select>
-              )}
-            </FormItem>
-          </Col> */}
         </Row>
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={6} sm={24}>
@@ -571,9 +616,9 @@ class TableList extends PureComponent {
               <FormItem label="Stops">
                 {getFieldDecorator('stops')(
                   <TagSelect>
-                    <TagSelect.Option value="stop0">Nonstop</TagSelect.Option>
-                    <TagSelect.Option value="stop1">1 Stop</TagSelect.Option>
-                    <TagSelect.Option value="stop2">2+ Stops</TagSelect.Option>
+                    <TagSelect.Option value="0">Nonstop</TagSelect.Option>
+                    <TagSelect.Option value="1">1 Stop</TagSelect.Option>
+                    <TagSelect.Option value="3">2+ Stops</TagSelect.Option>
                   </TagSelect>
                 )}
               </FormItem>
@@ -603,7 +648,7 @@ class TableList extends PureComponent {
               </a>
             </span>
           </Col>
-          <Col md={6} sm={24}>
+          <Col md={8} sm={24}>
             <FormItem label="Sort">
               {getFieldDecorator('sort')(
                 <Select placeholder="Price(Low-High)" style={{ width: '100%' }}>

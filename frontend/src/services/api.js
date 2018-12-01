@@ -10,7 +10,7 @@ export const graphqlClient = new ApolloClient({
 
 export async function queryFlights(params) {
   console.log("params----", params);
-  return request(`/api/flights?${stringify(params)}`);
+  return request(`http://127.0.0.1:5000/api/flights?${stringify(params)}`);
 }
 
 export async function queryWish(params) {

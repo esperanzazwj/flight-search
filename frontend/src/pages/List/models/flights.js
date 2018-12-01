@@ -12,7 +12,6 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {
-      console.log("payload----", payload);
       const response = yield call(queryFlights, payload);
       yield put({
         type: 'save',
