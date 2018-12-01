@@ -93,14 +93,14 @@ export async function updateFakeList(params) {
 }
 
 export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
+  return request('http://127.0.0.1:5000/api/login', {
     method: 'POST',
     body: params,
   });
 }
 
 export async function fakeRegister(params) {
-  return request('/api/register', {
+  return request('http://127.0.0.1:5000/api/register', {
     method: 'POST',
     body: params,
   });
