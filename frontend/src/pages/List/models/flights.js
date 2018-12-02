@@ -20,11 +20,6 @@ export default {
     },
     *add({ payload, callback }, { call, put }) {
       const response = yield call(addWish, payload);
-      yield put({
-        type: 'save',
-        payload: response,
-      });
-      if (callback) callback();
     },
   },
 

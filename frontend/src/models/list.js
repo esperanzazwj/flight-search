@@ -1,4 +1,4 @@
-import { queryWish, queryFakeList, removeFakeList, addFakeList, updateFakeList } from '@/services/api';
+import { queryWish, removeWish, queryFakeList, removeFakeList, addFakeList, updateFakeList } from '@/services/api';
 
 export default {
   namespace: 'list',
@@ -16,11 +16,13 @@ export default {
       });
     },
     *remove({ payload }, { call, put }) {
-      const response = yield call(queryWish, payload);
+      console.log('query list', payload);
+      const response = yield call(removeWish, payload);
       yield put({
         type: 'queryList',
         payload: Array.isArray(response) ? response : [],
       });
+      console.log('after call', payload);
     },
     *appendFetch({ payload }, { call, put }) {
       const response = yield call(queryFakeList, payload);

@@ -18,7 +18,8 @@ export async function queryWish(params) {
 }
 
 export async function removeWish(params) {
-  return request(`/api/delete?${stringify(params)}`);
+  console.log("params----", params);
+  return request(`http://127.0.0.1:5000/api/delete?${stringify(params)}`);
 }
 
 export async function addWish(params) {

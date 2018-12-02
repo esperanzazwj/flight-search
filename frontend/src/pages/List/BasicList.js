@@ -59,6 +59,7 @@ class BasicList extends PureComponent {
 
   deleteItem = item => {
     const { dispatch } = this.props;
+    console.log('remove', item[0].id);
     const wid = item[0].id;
     dispatch({
       type: 'list/remove',
@@ -87,7 +88,7 @@ class BasicList extends PureComponent {
             />
             <div className={styles.listContent} style={{display: 'flex'}} >
               <div className={styles.listContentItem} style={{ marginLeft: 400}}>
-                <span>{item.hour + ' h ' + item.minute + ' m ' + item.stops}</span>
+                <span>{item.hour + ' h ' + item.minute + ' m '}</span>
                 <p>{item.departure + ' - ' + item.arrival}</p>
               </div>
               <div className={styles.listContentItem} style={{ marginLeft: 128}}>

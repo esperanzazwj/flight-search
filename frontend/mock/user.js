@@ -2,7 +2,7 @@
 export default {
   // 支持值为 Object 和 Array
   'GET /api/currentUser': {
-    name: 'Rob',
+    name: '  ',
     avatar: 'https://diary.sgp1.digitaloceanspaces.com/rob-avatar.png',
     userid: '00000001',
     email: 'antdesign@alipay.com',
