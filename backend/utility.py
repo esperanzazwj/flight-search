@@ -13,7 +13,7 @@ def gen_roundtrip(list1, list2):
             item = []
             for flight in item1 + item2:
                 item.append(dict(flight))
-            
+
             yield item
 
 
@@ -27,28 +27,8 @@ def convert_airline_tag(tags):
         'airline6': 'United',
         'airline7': 'Spirit Airlines'
     }
-    
+
     return [table[tag] for tag in tags if tag is not None]
-
-
-def airline_filter(trips, tags):
-    airlines = convert_airline_tag(tags)
-    
-    result = []
-    for trip in trips:
-        okay = True
-        for flight in trip:
-            if flight['airlines'] not in airlines:
-                okay = False
-                break
-        if okay:
-            result.append(trip)
-
-for i, trip in enumerate(result):
-    for flight in trip:
-        flight['id'] = i
-    
-    return result
 
 
 def convert_time_tag(tags):
@@ -61,6 +41,26 @@ def convert_time_tag(tags):
     return [table[tag] for tag in tags if tag is not None]
 
 
+def airline_filter(trips, tags):
+    airlines = convert_airline_tag(tags)
+
+    result = []
+    for trip in trips:
+        okay = True
+        for flight in trip:
+            if flight['airlines'] not in airlines:
+                okay = False
+                break
+        if okay:
+            result.append(trip)
+
+    for i, trip in enumerate(result):
+        for flight in trip:
+            flight['id'] = i
+
+    return result
+
+
 def parse_time(tstr):
     result = []
     i = 0
@@ -69,13 +69,13 @@ def parse_time(tstr):
             result.append(int(tstr[i:j]))
             i = j + 1
 
-result.append(int(tstr[i:]))
-return result
+    result.append(int(tstr[i:]))
+    return result
 
 
 def time_filter(trips, tag):
     time_intervals = convert_time_tag(tag)
-    
+
     result = []
     for trip in trips:
         t = parse_time(trip[0]['depart_time'])
@@ -84,23 +84,23 @@ def time_filter(trips, tag):
                 result.append(trip)
                 break
 
-for i, trip in enumerate(result):
-    for flight in trip:
-        flight['id'] = i
-    
+    for i, trip in enumerate(result):
+        for flight in trip:
+            flight['id'] = i
+
     return result
 
 
 def max_hour_filter(trips, v):
     result = []
-    
+
     for trip in trips:
         duration = get_time_diff(trip[-1]['arrival_date'], trip[-1]['arrival_time'], trip[0]['departure_date'],
                                  trip[0]['depart_time']) // 3600
-                                 if duration // 3600 <= v:
-                                     result.append(trip)
+        if duration // 3600 <= v:
+            result.append(trip)
 
-return result
+    return result
 
 
 def high_price_filter(trips, v):
@@ -137,9 +137,41 @@ def add_duration_and_time(trips):
     for trip in trips:
         duration = get_time_diff(trip[-1]['arrival_date'], trip[-1]['arrival_time'], trip[0]['departure_date'],
                                  trip[0]['depart_time']) // 3600
-                                 d_time = convert_to_sec(trip[0]['arrival_date'], trip[0]['arrival_time'])
-                                 a_time = convert_to_sec(trip[-1]['arrival_date'], trip[-1]['arrival_time'])
-                                 for flight in trip:
-                                     flight['duration'] = duration
-                                     flight['d_time'] = d_time
-                                     flight['a_time'] = a_time
+        d_time = convert_to_sec(trip[0]['arrival_date'], trip[0]['arrival_time'])
+        a_time = convert_to_sec(trip[-1]['arrival_date'], trip[-1]['arrival_time'])
+        for flight in trip:
+            flight['duration'] = duration
+            flight['d_time'] = d_time
+            flight['a_time'] = a_time
+
+
+airline_map = {
+    'Alaska Airlines': 'Alaska',
+    'American Airlines': 'American',
+    'Delta': 'Delta',
+    'Frontier Airlines': 'Frontier',
+    'JetBlue Airways': 'JetBlue',
+    'Spirit Airlines': 'Spirit',
+    'United': 'United'
+}
+
+r_airline_map = {
+    v: k
+    for k, v in airline_map.items()
+}
+
+
+def trucate_airlines(trips):
+    for trip in trips:
+        for flight in trip:
+            airlines = flight['airlines']
+            flight['airlines'] = airline_map[airlines]
+
+
+def add_total_price(trips):
+    for trip in trips:
+        total_price = 0.0
+        for flight in trip:
+            total_price += flight['price']
+        for flight in trip:
+            flight['total_price'] = total_price
