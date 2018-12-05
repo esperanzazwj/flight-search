@@ -96,8 +96,8 @@ def max_hour_filter(trips, v):
 
     for trip in trips:
         duration = get_time_diff(trip[-1]['arrival_date'], trip[-1]['arrival_time'], trip[0]['departure_date'],
-                                 trip[0]['depart_time']) // 3600
-        if duration // 3600 <= v:
+                                 trip[0]['depart_time']) // 60
+        if duration <= v * 60:
             result.append(trip)
 
     return result

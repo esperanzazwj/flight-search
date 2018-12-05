@@ -166,6 +166,9 @@ def roundtrip_search(
         low_pirce,
         high_price
 ):
+    if departure_date > return_date:
+        return []
+
     result1 = search(
         departure_airport_city,
         arrival_airport_city,
@@ -319,8 +322,11 @@ def api_flights():
 
     in_time_tags = [tag for tag in in_time_tags if tag is not None]
 
-    max_hours = request.args.get('max_hours')
-    if max_hours is not None:
+    max_hours = request.args.get('max_duration')
+
+    if max_hours is not None and len(max_hours) == 0:
+        max_hours = None
+    elif max_hours is not None:
         max_hours = int(max_hours)
 
     low_price = request.args.get('low_price')
