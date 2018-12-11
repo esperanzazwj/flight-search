@@ -1,6 +1,33 @@
 # flight-search
 Searching for best and cheapest flights
 
+## Page Rendering:
+#### Flight Search Page: /src/pages/List/TableList.js
+#### Wish List Page: /src/pages/List/BasicList.js
+#### Login Page: /src/pages/User/Login.js
+#### Register Page: /src/pages/User/Register.js
+
+## Query dispatch functions:
+#### Flight search: /src/pages/List/models/flights.js
+#### Add to wish list: /src/pages/List/models/flights.js
+#### Query wish list: /src/models/list.js
+#### Remove from wish list: /src/models/list.js
+#### Login: /src/models/login.js
+#### Register: /src/pages/User/models/register.js
+
+## API:
+#### /src/services/api.js
+
+## Mock data:
+#### /mock/flights.js
+
+## How to run
+1. Install Node
+2. Install yarn
+3. cd flight-search
+4. Run yarn
+5. Run yarn start
+
 
 ### The data directory consists of 2 python files and 4 data files:
 > getdata.py: <br>
@@ -23,3 +50,12 @@ Searching for best and cheapest flights
 ### The backend directory contains the implementation of the backend part of the project
 
 There are mainly two files for the backend part, app.py and utility.py. app.py contains the implementation of the server and utility.py contains some help functions for app.py.
+
+To run the server:
+1. install python3
+2. pip3 install flask
+3. pip3 install flask-mysql
+4. pip3 install flask-cors
+5. cd ./backend
+6. FLASK_APP=app.py flask run
+
