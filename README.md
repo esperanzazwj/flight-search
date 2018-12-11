@@ -19,3 +19,7 @@ Searching for best and cheapest flights
 > airport_data.in and state_data.in are no longer used.
 
 ### ER.png is the ER diagram of our database. 
+
+### The backend directory contains the implementation of the backend part of the project
+
+There are mainly two files for the backend part, app.py and utility.py. app.py contains the implementation of the server and utility.py contains some help functions for app.py.
